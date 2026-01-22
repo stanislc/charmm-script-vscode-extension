@@ -33,10 +33,10 @@ This extension provides extensive syntax highlighting for CHARMM `.inp` and `.st
 
 - `.inp` - CHARMM input files
 - `.str` - CHARMM stream files
-- `.rtf` - Residue Topology Files
-- `.prm` - Parameter files
+- `.rtf` - Residue Topology Files (RESI, MASS, ATOM, BOND, ANGL, DIHE, IMPR, etc.)
+- `.prm` - Parameter files (ATOMS, BONDS, ANGLES, DIHEDRALS, NONBONDED, etc.)
 - `.crd` - Coordinate files
-- `.psf` - Protein Structure Files
+- `.psf` - Protein Structure Files (!NATOM, !NBOND, !NTHETA, etc.)
 
 ## Installation
 

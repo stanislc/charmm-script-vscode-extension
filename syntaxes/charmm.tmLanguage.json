@@ -19,6 +19,9 @@
 		{"include": "#misc_commands"},
 		{"include": "#subcommands"},
 		{"include": "#selection_keywords"},
+		{"include": "#rtf_keywords"},
+		{"include": "#prm_keywords"},
+		{"include": "#psf_keywords"},
 		{"include": "#storage"},
 		{"include": "#constants"}
 	],
@@ -329,6 +332,50 @@
 				{
 					"name": "keyword.operator.selection.charmm",
 					"match": "\\b(?i)(\\.and\\.|\\.or\\.|\\.not\\.|\\.around\\.|\\.subset\\.|\\.bonded\\.|\\.byres\\.|\\.bygroup\\.)\\b"
+				}
+			]
+		},
+		"rtf_keywords": {
+			"patterns": [
+				{
+					"name": "keyword.declaration.rtf.charmm",
+					"match": "^\\s*(?i)(RESI|PRES|MASS|DECL|DEFA|AUTO|END)\\b"
+				},
+				{
+					"name": "entity.name.type.rtf.charmm",
+					"match": "\\b(?i)(GROUP|GROU|ATOM|BOND|ANGL|ANGLE|DIHE|DIHEDRAL|IMPR|IMPROPER|CMAP|DONOR|DONO|ACCEPTOR|ACCE|IC|PATCH|PATC|BILD|DOUBLE|DOUB|TRIPLE|TRIP)\\b"
+				},
+				{
+					"name": "keyword.control.rtf.charmm",
+					"match": "\\b(?i)(FIRS|FIRST|LAST|ANGLES|DIHEDRALS|AUTOGENERATE|DRUDE)\\b"
+				}
+			]
+		},
+		"prm_keywords": {
+			"patterns": [
+				{
+					"name": "keyword.declaration.prm.charmm",
+					"match": "^\\s*(?i)(ATOMS|BONDS|ANGLES|DIHEDRALS|IMPROPER|IMPROPERS|CMAP|NONBONDED|NBONDED|NBFIX|HBOND|END)\\b"
+				},
+				{
+					"name": "entity.name.type.prm.charmm",
+					"match": "\\b(?i)(MASS|CUTNB|CTOFNB|CTONNB|EPS|E14FAC|WMIN|NBXMOD|ATOM|CDIE|RDIE|SWITCH|VSWITCH|VDIS)\\b"
+				}
+			]
+		},
+		"psf_keywords": {
+			"patterns": [
+				{
+					"name": "keyword.declaration.psf.charmm",
+					"match": "^\\s*(?i)(PSF|EXT|XPLOR|CMAP|CHEQ|DRUDE)\\b"
+				},
+				{
+					"name": "entity.name.section.psf.charmm",
+					"match": "![A-Z]+\\b"
+				},
+				{
+					"name": "keyword.other.psf.charmm",
+					"match": "\\b(?i)(NTITLE|NATOM|NBOND|NTHETA|NPHI|NIMPHI|NDON|NACC|NNB|NGRP|MOLNT|NUMLP|NUMLPH|NCRTERM)\\b"
 				}
 			]
 		},
