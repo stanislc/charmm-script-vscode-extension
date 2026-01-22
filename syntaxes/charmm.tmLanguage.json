@@ -203,7 +203,38 @@
 				},
 				{
 					"name": "entity.name.function.dynamics.charmm",
-					"match": "\\b(?i)(leap|vv2|start|rest|restart|cpt|veloci|timestep|nstep|nsavc|nsavv|iprfrq|ihtfrq|ieqfrq|ntrfrq|isvfrq|firstt|finalt|teminc|tbath|iseed)\\b"
+					"match": "\\b(?i)(leap|vv2|vver|verlet|start|strt|rest|restart|cpt|veloci|timestep|time|nstep|nste)\\b"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(nsavc|nsavv|nprint|npri|iprfrq|ihtfrq|ieqfrq|ntrfrq|isvfrq|inbfrq|ihbfrq|imgfrq)\\b"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(firstt|first|finalt|final|teminc|tbath|tref|tcoup|pref|pcoup|pmass|pgamma)\\b"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(iunrea|iunread|iunwri|iuncrd|iunvel|iunldm|kunit|nsavc|nsavv|nsavl|iseed|iasors|iasvel)\\b"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(prmc|iprs|prdv|tstruc|tcons|pcmc|ipcmc|iprsf)\\b",
+					"comment": "Pressure/MC options"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(ichecw|echeck|twindl|twindh|pwindl|pwindh|hotefn|hotefx|hotofn|hotofx)\\b"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(sgmd|sgft|tsgavg|sgbz|sgfr|sgmv|tempsg)\\b",
+					"comment": "Self-guided MD options"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(eips|vips|apts|pxyz|eipsv|ipvsh|ripfr|ripsp)\\b",
+					"comment": "Extended IMAGES options"
 				},
 				{
 					"name": "entity.name.function.dynamics.charmm",
