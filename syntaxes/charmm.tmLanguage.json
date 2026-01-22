@@ -427,7 +427,7 @@
         },
         {
           "name": "support.class.energy.charmm",
-          "match": "\\b(?i)(atom|cdie|rdie|vdis|vswi|vswitched|vshift|cdie|rdie|switch|shift|fswitch|fshift|force)\\b"
+          "match": "\\b(?i)(atom|cdie|rdie|vdis|vswi|vswitch|vswitched|vshift|cdie|rdie|switch|shift|fswitch|fshift|force)\\b"
         },
         {
           "name": "support.class.energy.charmm",
