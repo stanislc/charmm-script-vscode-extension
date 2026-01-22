@@ -2,79 +2,360 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "CHARMM",
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#comments"
-		},
-		{
-			"include": "#constants"
-		},
-		{
-			"include": "#storages"
-		},
-		{
-			"include": "#supports"
-		}
+		{"include": "#comments"},
+		{"include": "#strings"},
+		{"include": "#variables"},
+		{"include": "#control_flow"},
+		{"include": "#comparison_operators"},
+		{"include": "#main_commands"},
+		{"include": "#dynamics_commands"},
+		{"include": "#energy_commands"},
+		{"include": "#structure_commands"},
+		{"include": "#coordinate_commands"},
+		{"include": "#io_commands"},
+		{"include": "#analysis_commands"},
+		{"include": "#solvation_commands"},
+		{"include": "#qm_commands"},
+		{"include": "#misc_commands"},
+		{"include": "#subcommands"},
+		{"include": "#selection_keywords"},
+		{"include": "#storage"},
+		{"include": "#constants"}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.charmm",
-				"match": "\\b(if|for|label|goto|stop|bomlev|prnlev)\\b"
-			},
-			{
-				"name": "keyword.other.charmm",
-				"match": "\\b(ne|eq|lt|gt|le|ge|incr|by)\\b"
-			}
-		]
-		},
-		"storages": {
-			"patterns": [{
-				"name": "storage.type.charmm",
-				"match": "\\b(set|define|name|unit|scalar)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.charmm",
-			"begin": "\"",
-			"end": "\"",
+		"comments": {
 			"patterns": [
 				{
-					"name": "constant.character.escape.charmm",
-					"match": "\\\\."
+					"name": "comment.line.exclamation.charmm",
+					"begin": "!",
+					"end": "$"
+				},
+				{
+					"name": "comment.line.asterisk.charmm",
+					"match": "^\\s*\\*.*$"
 				}
 			]
 		},
-		"comments":{
-			"name": "comment.line.charmm",
-			"begin": "!",
-			"end": "(?=\\n)"
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.charmm",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.charmm",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.charmm",
+					"begin": "'",
+					"end": "'"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.other.readwrite.charmm",
+					"match": "@[a-zA-Z_][a-zA-Z0-9_]*"
+				},
+				{
+					"name": "variable.other.query.charmm",
+					"match": "\\?[a-zA-Z_][a-zA-Z0-9_]*"
+				}
+			]
+		},
+		"control_flow": {
+			"patterns": [
+				{
+					"name": "keyword.control.conditional.charmm",
+					"match": "\\b(?i)(if|then|else|endif|endi)\\b"
+				},
+				{
+					"name": "keyword.control.loop.charmm",
+					"match": "\\b(?i)(for|label|labe|goto|return|retu|stream|stre)\\b"
+				},
+				{
+					"name": "keyword.control.flow.charmm",
+					"match": "\\b(?i)(stop|bomb|boml|bomlev|prnlev|prle|prnl|wrnlev|wrnl|iolev|iole)\\b"
+				}
+			]
+		},
+		"comparison_operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.comparison.charmm",
+					"match": "\\b(?i)(\\.eq\\.|\\.ne\\.|\\.lt\\.|\\.gt\\.|\\.le\\.|\\.ge\\.|\\.ae\\.|eq|ne|lt|gt|le|ge|ae)\\b"
+				},
+				{
+					"name": "keyword.operator.arithmetic.charmm",
+					"match": "\\b(?i)(incr|decr|mult|divi|expo|by)\\b"
+				}
+			]
+		},
+		"main_commands": {
+			"patterns": [
+				{
+					"name": "keyword.other.command.charmm",
+					"match": "\\b(?i)(dyna|dynamics|mini|minim|minimize|vibr|vibran|corr|correl|traj|trajectory)\\b"
+				},
+				{
+					"name": "keyword.other.command.charmm",
+					"match": "\\b(?i)(ener|energy|gete|inte|interaction|nbon|nbond|nbonds|hbon|hbond|upda|update)\\b"
+				},
+				{
+					"name": "keyword.other.command.charmm",
+					"match": "\\b(?i)(gene|generate|patc|patch|auto|autogen|autogenerate|buil|build|hbui|hbuild|join)\\b"
+				}
+			]
+		},
+		"dynamics_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(nose|tpco|tpcontrol|nos2|shake|shak|mts|tamd|tmdi|tmd|dims|trek|trav|travel|rush|pull|repl|replica|repd|repdstr|domd|domdec)\\b"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(leap|vv2|start|rest|restart|cpt|veloci|timestep|nstep|nsavc|nsavv|iprfrq|ihtfrq|ieqfrq|ntrfrq|isvfrq|firstt|finalt|teminc|tbath|iseed)\\b"
+				},
+				{
+					"name": "entity.name.function.dynamics.charmm",
+					"match": "\\b(?i)(pint|pathint|rpat|rpath|path|string|stri|stringm|abfp|abfc|eabf|umbrella|umbr|wham|gamu|gamus|gumb)\\b"
+				}
+			]
+		},
+		"energy_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.energy.charmm",
+					"match": "\\b(?i)(bloc|block|mmfp|pert|eten|etsr|xtbd|tkrn|krnn|flmk|varc|varcut)\\b"
+				},
+				{
+					"name": "entity.name.function.energy.charmm",
+					"match": "\\b(?i)(cons|constraint|harm|dihe|dihedral|cdih|cldh|clpc|drop|rcon|rxcons|rgyr|rgycons|dmco|dmcons|noe|resd|pull)\\b"
+				},
+				{
+					"name": "entity.name.function.energy.charmm",
+					"match": "\\b(?i)(bond|angl|angle|urey|dihe|dihedral|impr|improper|vdw|vdwa|vdwaals|elec|coul|hbon|hbond|cmap|user)\\b"
+				},
+				{
+					"name": "entity.name.function.energy.charmm",
+					"match": "\\b(?i)(ewald|pme|pmel|fft|kappa|kmax|fftx|ffty|fftz|order|ctonnb|ctofnb|cutnb|cutim|wmin|eps|e14fac|nbxmod)\\b"
+				},
+				{
+					"name": "entity.name.function.energy.charmm",
+					"match": "\\b(?i)(atom|cdie|rdie|vdis|vswi|vswitched|vshift|cdie|rdie|switch|shift|fswitch|fshift|force)\\b"
+				}
+			]
+		},
+		"structure_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.structure.charmm",
+					"match": "\\b(?i)(read|rtf|param|para|parameter|psf|coor|coordinate|topo|topology|sequence|sequ|ic)\\b"
+				},
+				{
+					"name": "entity.name.function.structure.charmm",
+					"match": "\\b(?i)(dele|delete|rena|rename|join|merg|merge|lone|lonepair|drud|drude|link|addl|rell)\\b"
+				},
+				{
+					"name": "entity.name.function.structure.charmm",
+					"match": "\\b(?i)(dono|donor|acce|acceptor|first|last|setup|mass|charge|segid|resid|resn|resname|atom|type|ires|iseg)\\b"
+				}
+			]
+		},
+		"coordinate_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.coordinate.charmm",
+					"match": "\\b(?i)(coor|coordinate|init|copy|swap|scal|scale|trans|tran|translate|rota|rotate|orie|orient|axis)\\b"
+				},
+				{
+					"name": "entity.name.function.coordinate.charmm",
+					"match": "\\b(?i)(rms|rmsd|diff|dist|distance|mind|mindist|maxd|maxdist|aver|average|stat|statistics|dupl|duplicate)\\b"
+				},
+				{
+					"name": "entity.name.function.coordinate.charmm",
+					"match": "\\b(?i)(dmat|dmatrix|cova|covariance|iner|inertia|rgyr|gyration|surf|surface|volu|volume|dipo|dipole)\\b"
+				},
+				{
+					"name": "entity.name.function.coordinate.charmm",
+					"match": "\\b(?i)(heli|helix|lsqp|lsqplane|paxa|principal|secs|secondary|puck|pucker|forc|force|sear|search|oper)\\b"
+				},
+				{
+					"name": "entity.name.function.coordinate.charmm",
+					"match": "\\b(?i)(comp|comparison|fact|factor|weig|weight|mass|norot|norotation|notr|notranslation|sele|select|end)\\b"
+				}
+			]
+		},
+		"io_commands": {
+			"patterns": [
+				{
+					"name": "support.function.io.charmm",
+					"match": "\\b(?i)(open|clos|close|read|writ|write|prin|print|form|formatted|unfo|unformatted|unit|name|card|file|append|appe)\\b"
+				},
+				{
+					"name": "support.function.io.charmm",
+					"match": "\\b(?i)(echo|echu|titl|title|ldti|time|show|inqu|inquire|rewi|rewind|rewf|rewt|get|skip|trim)\\b"
+				},
+				{
+					"name": "support.function.io.charmm",
+					"match": "\\b(?i)(traj|trajectory|dcd|binary|rest|restart|crd|pdb|psf|iofo|ioformat|exte|extended|noex|noextended)\\b"
+				}
+			]
+		},
+		"analysis_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.analysis.charmm",
+					"match": "\\b(?i)(anal|analysis|corr|correl|corre|correlation|moni|monitor|hist|histogram|time|series)\\b"
+				},
+				{
+					"name": "entity.name.function.analysis.charmm",
+					"match": "\\b(?i)(nmr|noe|rdc|larm|larmord|ccs|ssnmr|jcou|coupling|mull|mulliken|esta|estats)\\b"
+				},
+				{
+					"name": "entity.name.function.analysis.charmm",
+					"match": "\\b(?i)(molv|molvib|qub|test|fitc|fitcharge|fitp|fitparam|rdfs|rdfsol|shel|shell|cors|corsol)\\b"
+				}
+			]
+		},
+		"solvation_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.solvation.charmm",
+					"match": "\\b(?i)(gbor|genborn|gbim|gbmv|gbsw|mses|pbeq|eef1|aspener|sasa|sasae|scpi|scpism|fact|facts|rism)\\b"
+				},
+				{
+					"name": "entity.name.function.solvation.charmm",
+					"match": "\\b(?i)(imag|image|crys|crystal|xtla|xtlb|xtlc|alpha|beta|gamma|bycb|bycc|bycu|cubic|tetr|tetragonal|orth|orthorhombic)\\b"
+				},
+				{
+					"name": "entity.name.function.solvation.charmm",
+					"match": "\\b(?i)(impa|impatom|sbou|sbound|boun|boundary|sphere|rhdo|rhombic|hexa|hexagonal|mono|monoclinic|tric|triclinic)\\b"
+				},
+				{
+					"name": "entity.name.function.solvation.charmm",
+					"match": "\\b(?i)(phmd|phte|consph|cnsp|mobh|mobhy|dbia|denbias|epmf|gopa|gopair|prim|primo)\\b"
+				}
+			]
+		},
+		"qm_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.qm.charmm",
+					"match": "\\b(?i)(quan|quantum|game|gamess|gaus|gaussian|qche|qchem|qtur|qturbo|nwch|nwchem|squa|squantm|sccd|sccdftb)\\b"
+				},
+				{
+					"name": "entity.name.function.qm.charmm",
+					"match": "\\b(?i)(mndo|cadp|cadpac|ifqn|qmmm|addl|rell|qmfi|qmfix|mkdu|mkdummy)\\b"
+				},
+				{
+					"name": "entity.name.function.qm.charmm",
+					"match": "\\b(?i)(cheq|fluc|flucq|fqba|pipf|pfba|drud|drude|pola|polar|mtp|mtpl)\\b"
+				}
+			]
+		},
+		"misc_commands": {
+			"patterns": [
+				{
+					"name": "entity.name.function.misc.charmm",
+					"match": "\\b(?i)(bann|banner|conf|config|pref|preference|date|fast|rese|reset|envi|environment|syst|system|frcd)\\b"
+				},
+				{
+					"name": "entity.name.function.misc.charmm",
+					"match": "\\b(?i)(aidx|quic|quick|rand|random|iran|irandom|long|short|shor|lowe|lower|uppe|upper|user|usersb)\\b"
+				},
+				{
+					"name": "entity.name.function.misc.charmm",
+					"match": "\\b(?i)(blad|blade|omm|openmm|domd|domdec|ocl|opencl|grid|fftg|fftdock|ommd|mcom|multicom)\\b"
+				},
+				{
+					"name": "entity.name.function.misc.charmm",
+					"match": "\\b(?i)(mc|mcma|move|galg|genetic|csa|mast|master|etra|etraj|rece|tran|msca|mscale|serv|server)\\b"
+				},
+				{
+					"name": "entity.name.function.misc.charmm",
+					"match": "\\b(?i)(gnn|emap|shap|shapes|olap|overlap|torq|torque|afm|axd|hqbm|rxnc|lupo|lupopt|fren|frencalc)\\b"
+				},
+				{
+					"name": "entity.name.function.misc.charmm",
+					"match": "\\b(?i)(zmod|zerom|zmat|prot|proto|four|fourd|edif|mlte|cvel|veloci|dead|deadline|atli|alternate|nbac|bact)\\b"
+				}
+			]
+		},
+		"subcommands": {
+			"patterns": [
+				{
+					"name": "support.function.subcommand.charmm",
+					"match": "\\b(?i)(fill|edit|bild|build|seed|dele|keep|purg|purge|para|parameter|deri|derive|rest|restore|save|gene|generate)\\b"
+				},
+				{
+					"name": "support.function.subcommand.charmm",
+					"match": "\\b(?i)(clea|clear|best|rela|relative|abso|absolute|pcah|path|heli|helix)\\b"
+				},
+				{
+					"name": "support.function.subcommand.charmm",
+					"match": "\\b(?i)(wmai|wmain|wcom|wcomp|xcom|ycom|zcom|xref|yref|zref|econ|epco|rsca|wcad|alph|effe|radi|igno|aspv|vdws)\\b"
+				},
+				{
+					"name": "support.function.subcommand.charmm",
+					"match": "\\b(?i)(reci|sign|inde|index|norm|normalize|powe|power|ipow|sqrt|qhis|fqhi|hbco|tota|total)\\b"
+				},
+				{
+					"name": "support.function.subcommand.charmm",
+					"match": "\\b(?i)(fdim|fdco|fdeq|volu|qrad|sigm|bsol|qiac|qsac|fqch|fqma|fqpr|fqze|fqjz|fqcf|fqol|gcmc|gcbl|sgwt|sgga)\\b"
+				},
+				{
+					"name": "support.function.subcommand.charmm",
+					"match": "\\b(?i)(sdru|tmsc|conv|convert|draw|smap|cont|contact)\\b"
+				}
+			]
+		},
+		"selection_keywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.selection.charmm",
+					"match": "\\b(?i)(sele|select|end|all|none|bynu|bynum|segid|iseg|resid|ires|resn|resname|atom|type|chem|chemical)\\b"
+				},
+				{
+					"name": "keyword.other.selection.charmm",
+					"match": "\\b(?i)(prop|property|point|around|subset|recall|define|show|store|call|reset|init|initialize)\\b"
+				},
+				{
+					"name": "keyword.operator.selection.charmm",
+					"match": "\\b(?i)(\\.and\\.|\\.or\\.|\\.not\\.|\\.around\\.|\\.subset\\.|\\.bonded\\.|\\.byres\\.|\\.bygroup\\.)\\b"
+				}
+			]
+		},
+		"storage": {
+			"patterns": [
+				{
+					"name": "storage.type.charmm",
+					"match": "\\b(?i)(set|define|defi|name|unit|calc|scal|scalar|dimension|dime)\\b"
+				}
+			]
 		},
 		"constants": {
-            "patterns": [
-                {
-                    "name": "constant.numeric.charmm",
-                    "match": "\\d"
-                }
-            ]
-        },
-		"supports": {
-            "patterns": [
-                {
-                    "name": "support.function.builtin.charmm",
-                    "match": "\\b(open|close|echo|calc|read|stream|delete)\\b"
-                },
+			"patterns": [
 				{
-                    "name": "support.function.builtin.charmm",
-                    "match": "\\b(write|ic|print)\\b"
-                }
-            ]
-        }
+					"name": "constant.numeric.float.charmm",
+					"match": "\\b-?\\d+\\.\\d*([eEdD][+-]?\\d+)?\\b"
+				},
+				{
+					"name": "constant.numeric.integer.charmm",
+					"match": "\\b-?\\d+\\b"
+				},
+				{
+					"name": "constant.language.boolean.charmm",
+					"match": "\\b(?i)(true|false|on|off|yes|no)\\b"
+				}
+			]
+		}
 	},
 	"scopeName": "source.inp"
 }
