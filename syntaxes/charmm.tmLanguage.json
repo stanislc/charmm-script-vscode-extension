@@ -2,6 +2,10 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "CHARMM",
 	"patterns": [
+		{"include": "#embedded_rtf"},
+		{"include": "#embedded_prm"},
+		{"include": "#embedded_block"},
+		{"include": "#embedded_noe"},
 		{"include": "#psf_section_headers"},
 		{"include": "#comments"},
 		{"include": "#variables"},
@@ -27,6 +31,91 @@
 		{"include": "#continuation"}
 	],
 	"repository": {
+		"embedded_rtf": {
+			"begin": "(?i)^\\s*(READ)\\s+(RTF)\\s+(CARD)\\b",
+			"beginCaptures": {
+				"1": {"name": "keyword.control.command.charmm"},
+				"2": {"name": "storage.type.structure.charmm"},
+				"3": {"name": "support.function.io.charmm"}
+			},
+			"end": "(?i)^\\s*(END)\\b",
+			"endCaptures": {
+				"1": {"name": "keyword.control.command.charmm"}
+			},
+			"name": "meta.embedded.block.rtf.charmm",
+			"contentName": "source.rtf.charmm",
+			"patterns": [
+				{"include": "source.rtf.charmm"}
+			]
+		},
+		"embedded_prm": {
+			"begin": "(?i)^\\s*(READ)\\s+(PARA|PARAM|PARAMETER)\\s+(CARD)\\b",
+			"beginCaptures": {
+				"1": {"name": "keyword.control.command.charmm"},
+				"2": {"name": "storage.type.structure.charmm"},
+				"3": {"name": "support.function.io.charmm"}
+			},
+			"end": "(?i)^\\s*(END)\\b",
+			"endCaptures": {
+				"1": {"name": "keyword.control.command.charmm"}
+			},
+			"name": "meta.embedded.block.prm.charmm",
+			"contentName": "source.prm.charmm",
+			"patterns": [
+				{"include": "source.prm.charmm"}
+			]
+		},
+		"embedded_block": {
+			"begin": "(?i)^\\s*(BLOC|BLOCK)\\b(?!.*END)",
+			"beginCaptures": {
+				"1": {"name": "keyword.control.block.charmm"}
+			},
+			"end": "(?i)^\\s*(END)\\b",
+			"endCaptures": {
+				"1": {"name": "keyword.control.block.charmm"}
+			},
+			"name": "meta.embedded.block.block.charmm",
+			"patterns": [
+				{"include": "#comments"},
+				{"include": "#variables"},
+				{"include": "#block_commands"},
+				{"include": "#constants"}
+			]
+		},
+		"embedded_noe": {
+			"begin": "(?i)^\\s*(NOE)\\b(?!.*END)",
+			"beginCaptures": {
+				"1": {"name": "keyword.control.noe.charmm"}
+			},
+			"end": "(?i)^\\s*(END)\\b",
+			"endCaptures": {
+				"1": {"name": "keyword.control.noe.charmm"}
+			},
+			"name": "meta.embedded.block.noe.charmm",
+			"patterns": [
+				{"include": "#comments"},
+				{"include": "#variables"},
+				{"include": "#noe_commands"},
+				{"include": "#selection_keywords"},
+				{"include": "#constants"}
+			]
+		},
+		"block_commands": {
+			"patterns": [
+				{
+					"name": "support.function.block.charmm",
+					"match": "\\b(?i)(CALL|COEF|COEFF|MSLD|PMEL|LANG|LDIN|LDBI|QLDM|RMLA|ADEX|EXCL)\\b"
+				}
+			]
+		},
+		"noe_commands": {
+			"patterns": [
+				{
+					"name": "support.function.noe.charmm",
+					"match": "\\b(?i)(ASSI|ASSIGN|REST|RESTRAINT|RESET|PRIN|PRINT|ANAL|ANALYSIS|SCAL|SCALE|KMIN|KMAX|RMIN|RMAX|FMAX|RSWI|REXP|IEXP|IREX)\\b"
+				}
+			]
+		},
 		"psf_section_headers": {
 			"patterns": [
 				{
@@ -93,15 +182,15 @@
 		"main_commands": {
 			"patterns": [
 				{
-					"name": "keyword.other.command.charmm",
+					"name": "keyword.control.command.charmm",
 					"match": "\\b(?i)(dyna|dynamics|mini|minim|minimize|vibr|vibran|corr|correl|traj|trajectory)\\b"
 				},
 				{
-					"name": "keyword.other.command.charmm",
+					"name": "keyword.control.command.charmm",
 					"match": "\\b(?i)(ener|energy|gete|inte|interaction|nbon|nbond|nbonds|hbon|hbond|upda|update)\\b"
 				},
 				{
-					"name": "keyword.other.command.charmm",
+					"name": "keyword.control.command.charmm",
 					"match": "\\b(?i)(gene|generate|patc|patch|auto|autogen|autogenerate|buil|build|hbui|hbuild|join)\\b"
 				}
 			]
@@ -125,23 +214,23 @@
 		"energy_commands": {
 			"patterns": [
 				{
-					"name": "entity.name.function.energy.charmm",
+					"name": "support.class.energy.charmm",
 					"match": "\\b(?i)(bloc|block|mmfp|pert|eten|etsr|xtbd|tkrn|krnn|flmk|varc|varcut)\\b"
 				},
 				{
-					"name": "entity.name.function.energy.charmm",
+					"name": "support.class.energy.charmm",
 					"match": "\\b(?i)(cons|constraint|harm|dihe|dihedral|cdih|cldh|clpc|drop|rcon|rxcons|rgyr|rgycons|dmco|dmcons|noe|resd|pull)\\b"
 				},
 				{
-					"name": "entity.name.function.energy.charmm",
+					"name": "support.class.energy.charmm",
 					"match": "\\b(?i)(bond|angl|angle|urey|dihe|dihedral|impr|improper|vdw|vdwa|vdwaals|elec|coul|hbon|hbond|cmap|user)\\b"
 				},
 				{
-					"name": "entity.name.function.energy.charmm",
+					"name": "support.class.energy.charmm",
 					"match": "\\b(?i)(ewald|pme|pmel|fft|kappa|kmax|fftx|ffty|fftz|order|ctonnb|ctofnb|cutnb|cutim|wmin|eps|e14fac|nbxmod)\\b"
 				},
 				{
-					"name": "entity.name.function.energy.charmm",
+					"name": "support.class.energy.charmm",
 					"match": "\\b(?i)(atom|cdie|rdie|vdis|vswi|vswitched|vshift|cdie|rdie|switch|shift|fswitch|fshift|force)\\b"
 				}
 			]
@@ -149,15 +238,15 @@
 		"structure_commands": {
 			"patterns": [
 				{
-					"name": "entity.name.function.structure.charmm",
+					"name": "storage.type.structure.charmm",
 					"match": "\\b(?i)(read|rtf|param|para|parameter|psf|coor|coordinate|topo|topology|sequence|sequ|ic)\\b"
 				},
 				{
-					"name": "entity.name.function.structure.charmm",
+					"name": "storage.type.structure.charmm",
 					"match": "\\b(?i)(dele|delete|rena|rename|join|merg|merge|lone|lonepair|drud|drude|link|addl|rell)\\b"
 				},
 				{
-					"name": "entity.name.function.structure.charmm",
+					"name": "storage.type.structure.charmm",
 					"match": "\\b(?i)(dono|donor|acce|acceptor|first|last|setup|mass|charge|segid|resid|resn|resname|atom|type|ires|iseg)\\b"
 				}
 			]
@@ -165,23 +254,23 @@
 		"coordinate_commands": {
 			"patterns": [
 				{
-					"name": "entity.name.function.coordinate.charmm",
+					"name": "variable.language.coordinate.charmm",
 					"match": "\\b(?i)(coor|coordinate|init|copy|swap|scal|scale|trans|tran|translate|rota|rotate|orie|orient|axis)\\b"
 				},
 				{
-					"name": "entity.name.function.coordinate.charmm",
+					"name": "variable.language.coordinate.charmm",
 					"match": "\\b(?i)(rms|rmsd|diff|dist|distance|mind|mindist|maxd|maxdist|aver|average|stat|statistics|dupl|duplicate)\\b"
 				},
 				{
-					"name": "entity.name.function.coordinate.charmm",
+					"name": "variable.language.coordinate.charmm",
 					"match": "\\b(?i)(dmat|dmatrix|cova|covariance|iner|inertia|rgyr|gyration|surf|surface|volu|volume|dipo|dipole)\\b"
 				},
 				{
-					"name": "entity.name.function.coordinate.charmm",
+					"name": "variable.language.coordinate.charmm",
 					"match": "\\b(?i)(heli|helix|lsqp|lsqplane|paxa|principal|secs|secondary|puck|pucker|forc|force|sear|search|oper)\\b"
 				},
 				{
-					"name": "entity.name.function.coordinate.charmm",
+					"name": "variable.language.coordinate.charmm",
 					"match": "\\b(?i)(comp|comparison|fact|factor|weig|weight|mass|norot|norotation|notr|notranslation|sele|select|end)\\b"
 				}
 			]
@@ -205,15 +294,15 @@
 		"analysis_commands": {
 			"patterns": [
 				{
-					"name": "entity.name.function.analysis.charmm",
+					"name": "constant.other.analysis.charmm",
 					"match": "\\b(?i)(anal|analysis|corr|correl|corre|correlation|moni|monitor|hist|histogram|time|series)\\b"
 				},
 				{
-					"name": "entity.name.function.analysis.charmm",
+					"name": "constant.other.analysis.charmm",
 					"match": "\\b(?i)(nmr|noe|rdc|larm|larmord|ccs|ssnmr|jcou|coupling|mull|mulliken|esta|estats)\\b"
 				},
 				{
-					"name": "entity.name.function.analysis.charmm",
+					"name": "constant.other.analysis.charmm",
 					"match": "\\b(?i)(molv|molvib|qub|test|fitc|fitcharge|fitp|fitparam|rdfs|rdfsol|shel|shell|cors|corsol)\\b"
 				}
 			]
@@ -221,19 +310,19 @@
 		"solvation_commands": {
 			"patterns": [
 				{
-					"name": "entity.name.function.solvation.charmm",
+					"name": "entity.name.type.solvation.charmm",
 					"match": "\\b(?i)(gbor|genborn|gbim|gbmv|gbsw|mses|pbeq|eef1|aspener|sasa|sasae|scpi|scpism|fact|facts|rism)\\b"
 				},
 				{
-					"name": "entity.name.function.solvation.charmm",
+					"name": "entity.name.type.solvation.charmm",
 					"match": "\\b(?i)(imag|image|crys|crystal|xtla|xtlb|xtlc|alpha|beta|gamma|bycb|bycc|bycu|cubic|tetr|tetragonal|orth|orthorhombic)\\b"
 				},
 				{
-					"name": "entity.name.function.solvation.charmm",
+					"name": "entity.name.type.solvation.charmm",
 					"match": "\\b(?i)(impa|impatom|sbou|sbound|boun|boundary|sphere|rhdo|rhombic|hexa|hexagonal|mono|monoclinic|tric|triclinic)\\b"
 				},
 				{
-					"name": "entity.name.function.solvation.charmm",
+					"name": "entity.name.type.solvation.charmm",
 					"match": "\\b(?i)(phmd|phte|consph|cnsp|mobh|mobhy|dbia|denbias|epmf|gopa|gopair|prim|primo)\\b"
 				}
 			]
@@ -241,15 +330,15 @@
 		"qm_commands": {
 			"patterns": [
 				{
-					"name": "entity.name.function.qm.charmm",
+					"name": "string.regexp.qm.charmm",
 					"match": "\\b(?i)(quan|quantum|game|gamess|gaus|gaussian|qche|qchem|qtur|qturbo|nwch|nwchem|squa|squantm|sccd|sccdftb)\\b"
 				},
 				{
-					"name": "entity.name.function.qm.charmm",
+					"name": "string.regexp.qm.charmm",
 					"match": "\\b(?i)(mndo|cadp|cadpac|ifqn|qmmm|addl|rell|qmfi|qmfix|mkdu|mkdummy)\\b"
 				},
 				{
-					"name": "entity.name.function.qm.charmm",
+					"name": "string.regexp.qm.charmm",
 					"match": "\\b(?i)(cheq|fluc|flucq|fqba|pipf|pfba|drud|drude|pola|polar|mtp|mtpl)\\b"
 				}
 			]
@@ -257,27 +346,27 @@
 		"misc_commands": {
 			"patterns": [
 				{
-					"name": "entity.name.function.misc.charmm",
+					"name": "meta.function-call.misc.charmm",
 					"match": "\\b(?i)(bann|banner|conf|config|pref|preference|date|fast|rese|reset|envi|environment|syst|system|frcd)\\b"
 				},
 				{
-					"name": "entity.name.function.misc.charmm",
+					"name": "meta.function-call.misc.charmm",
 					"match": "\\b(?i)(aidx|quic|quick|rand|random|iran|irandom|long|short|shor|lowe|lower|uppe|upper|user|usersb)\\b"
 				},
 				{
-					"name": "entity.name.function.misc.charmm",
+					"name": "meta.function-call.misc.charmm",
 					"match": "\\b(?i)(blad|blade|omm|openmm|domd|domdec|ocl|opencl|grid|fftg|fftdock|ommd|mcom|multicom)\\b"
 				},
 				{
-					"name": "entity.name.function.misc.charmm",
+					"name": "meta.function-call.misc.charmm",
 					"match": "\\b(?i)(mc|mcma|move|galg|genetic|csa|mast|master|etra|etraj|rece|tran|msca|mscale|serv|server)\\b"
 				},
 				{
-					"name": "entity.name.function.misc.charmm",
+					"name": "meta.function-call.misc.charmm",
 					"match": "\\b(?i)(gnn|emap|shap|shapes|olap|overlap|torq|torque|afm|axd|hqbm|rxnc|lupo|lupopt|fren|frencalc)\\b"
 				},
 				{
-					"name": "entity.name.function.misc.charmm",
+					"name": "meta.function-call.misc.charmm",
 					"match": "\\b(?i)(zmod|zerom|zmat|prot|proto|four|fourd|edif|mlte|cvel|veloci|dead|deadline|atli|alternate|nbac|bact)\\b"
 				}
 			]

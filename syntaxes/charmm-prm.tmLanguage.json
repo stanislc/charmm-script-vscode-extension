@@ -1,0 +1,58 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "CHARMM PRM",
+	"patterns": [
+		{"include": "#comments"},
+		{"include": "#titles"},
+		{"include": "#prm_sections"},
+		{"include": "#prm_keywords"},
+		{"include": "#constants"}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.exclamation.charmm",
+					"match": "!.*$"
+				}
+			]
+		},
+		"titles": {
+			"patterns": [
+				{
+					"name": "markup.heading.title.charmm",
+					"match": "^\\s*\\*.*$"
+				}
+			]
+		},
+		"prm_sections": {
+			"patterns": [
+				{
+					"name": "keyword.control.section.prm.charmm",
+					"match": "^\\s*(?i)(ATOM|ATOMS|BOND|BONDS|ANGL|ANGLES|THET|THETA|DIHE|DIHEDRALS|PHI|IMPR|IMPROPER|IMPROPERS|CMAP|NONB|NONBONDED|NBFI|NBFIX|HBON|HBOND|END)\\b"
+				}
+			]
+		},
+		"prm_keywords": {
+			"patterns": [
+				{
+					"name": "entity.name.type.parameter.prm.charmm",
+					"match": "\\b(?i)(MASS|CUTN|CUTNB|CTOF|CTOFNB|CTON|CTONNB|EPS|E14F|E14FAC|WMIN|NBXM|NBXMOD|CDIE|RDIE|SWIT|SWITCH|VSWI|VSWITCH|VDIS|GEOM|SIGM|SIGMA|EPSI|EPSILON|RMIN)\\b"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.float.charmm",
+					"match": "\\b-?\\d+\\.\\d*([eEdD][+-]?\\d+)?\\b"
+				},
+				{
+					"name": "constant.numeric.integer.charmm",
+					"match": "\\b-?\\d+\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.prm.charmm"
+}

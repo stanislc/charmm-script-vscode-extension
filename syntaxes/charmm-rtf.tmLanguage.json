@@ -1,0 +1,67 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "CHARMM RTF",
+	"patterns": [
+		{"include": "#comments"},
+		{"include": "#titles"},
+		{"include": "#rtf_declarations"},
+		{"include": "#rtf_topology"},
+		{"include": "#rtf_control"},
+		{"include": "#constants"}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.exclamation.charmm",
+					"match": "!.*$"
+				}
+			]
+		},
+		"titles": {
+			"patterns": [
+				{
+					"name": "markup.heading.title.charmm",
+					"match": "^\\s*\\*.*$"
+				}
+			]
+		},
+		"rtf_declarations": {
+			"patterns": [
+				{
+					"name": "keyword.control.declaration.rtf.charmm",
+					"match": "^\\s*(?i)(RESI|PRES|MASS|DECL|DEFA|AUTO|END)\\b"
+				}
+			]
+		},
+		"rtf_topology": {
+			"patterns": [
+				{
+					"name": "entity.name.type.topology.rtf.charmm",
+					"match": "\\b(?i)(GROU|GROUP|ATOM|BOND|ANGL|ANGLE|DIHE|DIHEDRAL|IMPR|IMPROPER|CMAP|DONO|DONOR|ACCE|ACCEPTOR|IC|PATC|PATCH|BILD|BUILD|DOUB|DOUBLE|TRIP|TRIPLE|LONE|LONEPAIR|LPIN)\\b"
+				}
+			]
+		},
+		"rtf_control": {
+			"patterns": [
+				{
+					"name": "keyword.other.control.rtf.charmm",
+					"match": "\\b(?i)(FIRS|FIRST|LAST|DRUD|DRUDE|ANIS|ANISOTROPY|THET|THETA|DELE|DELETE|NONE|WARN)\\b"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.float.charmm",
+					"match": "\\b-?\\d+\\.\\d*([eEdD][+-]?\\d+)?\\b"
+				},
+				{
+					"name": "constant.numeric.integer.charmm",
+					"match": "\\b-?\\d+\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.rtf.charmm"
+}
