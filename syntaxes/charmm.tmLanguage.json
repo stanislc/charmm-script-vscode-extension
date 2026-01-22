@@ -31,8 +31,8 @@
 			"patterns": [
 				{
 					"name": "entity.name.section.psf.charmm",
-					"match": "![A-Z][A-Z0-9]*\\b",
-					"comment": "PSF section headers like !NATOM, !NBOND - must come before comments"
+					"match": "!(NTITLE|NATOM|NBOND|NTHETA|NPHI|NIMPHI|NDON|NACC|NNB|NGRP|NUMLP|NCRTERM|MOLNT)\\b",
+					"comment": "PSF section headers - specific known headers only"
 				}
 			]
 		},
@@ -40,8 +40,8 @@
 			"patterns": [
 				{
 					"name": "comment.line.exclamation.charmm",
-					"match": "!(?![A-Z]{2,}).*$",
-					"comment": "Comments starting with ! but not PSF section headers"
+					"match": "!.*$",
+					"comment": "Comments starting with !"
 				},
 				{
 					"name": "comment.line.asterisk.charmm",
