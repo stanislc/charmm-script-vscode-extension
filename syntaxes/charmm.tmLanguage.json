@@ -427,7 +427,7 @@
         },
         {
           "name": "support.class.energy.charmm",
-          "match": "\\b(?i)(atom|cdie|rdie|vdis|vswi|vswitch|vswitched|vshift|cdie|rdie|switch|shift|fswitch|fshift|force)\\b"
+          "match": "\\b(?i)(atom|cdie|rdie|vdis|vswi|vswitch|vswitched|vshift|switch|shift|fswitch|fshift|force)\\b"
         },
         {
           "name": "support.class.energy.charmm",
@@ -540,24 +540,24 @@
     "analysis_commands": {
       "patterns": [
         {
-          "name": "constant.other.analysis.charmm",
+          "name": "entity.name.function.analysis.charmm",
           "match": "\\b(?i)(anal|analysis|corr|correl|corre|correlation|moni|monitor|hist|histogram|time|series)\\b"
         },
         {
-          "name": "constant.other.analysis.charmm",
+          "name": "entity.name.function.analysis.charmm",
           "match": "\\b(?i)(nmr|noe|rdc|larm|larmord|ccs|ssnmr|jcou|coupling|mull|mulliken|esta|estats)\\b"
         },
         {
-          "name": "constant.other.analysis.charmm",
+          "name": "entity.name.function.analysis.charmm",
           "match": "\\b(?i)(molv|molvib|qub|test|fitc|fitcharge|fitp|fitparam|rdfs|rdfsol|shel|shell|cors|corsol)\\b"
         },
         {
-          "name": "constant.other.analysis.charmm",
+          "name": "entity.name.function.analysis.charmm",
           "match": "\\b(?i)(maxtime|maxt|maxseries|maxs|maxtimesteps|maxatoms|maxa|noup)\\b",
           "comment": "CORREL limits"
         },
         {
-          "name": "constant.other.analysis.charmm",
+          "name": "entity.name.function.analysis.charmm",
           "match": "\\b(?i)(stat|secs|verbose|verb|covariance|cova|dims|dyna)\\b",
           "comment": "Analysis output options"
         }
@@ -606,15 +606,15 @@
     "qm_commands": {
       "patterns": [
         {
-          "name": "string.regexp.qm.charmm",
+          "name": "support.class.qm.charmm",
           "match": "\\b(?i)(quan|quantum|game|gamess|gaus|gaussian|qche|qchem|qtur|qturbo|nwch|nwchem|squa|squantm|sccd|sccdftb)\\b"
         },
         {
-          "name": "string.regexp.qm.charmm",
+          "name": "support.class.qm.charmm",
           "match": "\\b(?i)(mndo|cadp|cadpac|ifqn|qmmm|addl|rell|qmfi|qmfix|mkdu|mkdummy)\\b"
         },
         {
-          "name": "string.regexp.qm.charmm",
+          "name": "support.class.qm.charmm",
           "match": "\\b(?i)(cheq|fluc|flucq|fqba|pipf|pfba|drud|drude|pola|polar|mtp|mtpl)\\b"
         }
       ]
