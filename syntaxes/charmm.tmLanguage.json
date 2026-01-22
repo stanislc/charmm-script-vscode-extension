@@ -2,6 +2,7 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "CHARMM",
 	"patterns": [
+		{"include": "#psf_section_headers"},
 		{"include": "#comments"},
 		{"include": "#strings"},
 		{"include": "#variables"},
@@ -26,12 +27,21 @@
 		{"include": "#constants"}
 	],
 	"repository": {
+		"psf_section_headers": {
+			"patterns": [
+				{
+					"name": "entity.name.section.psf.charmm",
+					"match": "![A-Z][A-Z0-9]*\\b",
+					"comment": "PSF section headers like !NATOM, !NBOND - must come before comments"
+				}
+			]
+		},
 		"comments": {
 			"patterns": [
 				{
 					"name": "comment.line.exclamation.charmm",
-					"begin": "!",
-					"end": "$"
+					"match": "!(?![A-Z]{2,}).*$",
+					"comment": "Comments starting with ! but not PSF section headers"
 				},
 				{
 					"name": "comment.line.asterisk.charmm",
@@ -343,11 +353,11 @@
 				},
 				{
 					"name": "entity.name.type.rtf.charmm",
-					"match": "\\b(?i)(GROUP|GROU|ATOM|BOND|ANGL|ANGLE|DIHE|DIHEDRAL|IMPR|IMPROPER|CMAP|DONOR|DONO|ACCEPTOR|ACCE|IC|PATCH|PATC|BILD|DOUBLE|DOUB|TRIPLE|TRIP)\\b"
+					"match": "\\b(?i)(GROU|ATOM|BOND|ANGL|DIHE|IMPR|CMAP|DONO|ACCE|IC|PATC|BILD|DOUB|TRIP|LONE|LPIN)\\b"
 				},
 				{
 					"name": "keyword.control.rtf.charmm",
-					"match": "\\b(?i)(FIRS|FIRST|LAST|ANGLES|DIHEDRALS|AUTOGENERATE|DRUDE)\\b"
+					"match": "\\b(?i)(FIRS|LAST|DRUD|ANIS|THET)\\b"
 				}
 			]
 		},
@@ -355,11 +365,11 @@
 			"patterns": [
 				{
 					"name": "keyword.declaration.prm.charmm",
-					"match": "^\\s*(?i)(ATOMS|BONDS|ANGLES|DIHEDRALS|IMPROPER|IMPROPERS|CMAP|NONBONDED|NBONDED|NBFIX|HBOND|END)\\b"
+					"match": "^\\s*(?i)(ATOM|BOND|ANGL|DIHE|IMPR|CMAP|NONB|NBFI|HBON|END|THET|PHI)\\b"
 				},
 				{
 					"name": "entity.name.type.prm.charmm",
-					"match": "\\b(?i)(MASS|CUTNB|CTOFNB|CTONNB|EPS|E14FAC|WMIN|NBXMOD|ATOM|CDIE|RDIE|SWITCH|VSWITCH|VDIS)\\b"
+					"match": "\\b(?i)(MASS|CUTN|CTOF|CTON|EPS|E14F|WMIN|NBXM|CDIE|RDIE|SWIT|VSWI|VDIS|GEOM|SIGM|EPSI)\\b"
 				}
 			]
 		},
@@ -367,15 +377,11 @@
 			"patterns": [
 				{
 					"name": "keyword.declaration.psf.charmm",
-					"match": "^\\s*(?i)(PSF|EXT|XPLOR|CMAP|CHEQ|DRUDE)\\b"
-				},
-				{
-					"name": "entity.name.section.psf.charmm",
-					"match": "![A-Z]+\\b"
+					"match": "^\\s*(?i)(PSF|EXT|XPLO|CMAP|CHEQ|DRUD)\\b"
 				},
 				{
 					"name": "keyword.other.psf.charmm",
-					"match": "\\b(?i)(NTITLE|NATOM|NBOND|NTHETA|NPHI|NIMPHI|NDON|NACC|NNB|NGRP|MOLNT|NUMLP|NUMLPH|NCRTERM)\\b"
+					"match": "\\b(?i)(NTIT|NATI|NATOM|NBON|NTHE|NPHI|NIMP|NDON|NACC|NNB|NGRP|MOLN|NUML|NCRT)\\b"
 				}
 			]
 		},
