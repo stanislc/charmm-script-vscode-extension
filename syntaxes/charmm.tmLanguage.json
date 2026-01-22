@@ -32,7 +32,7 @@
 	],
 	"repository": {
 		"embedded_rtf": {
-			"begin": "(?i)^\\s*(READ)\\s+(RTF)\\s+(CARD)\\b",
+			"begin": "(?i)^\\s*(READ)\\s+(RTF)\\s+(CARD)\\b(?!.*(?:NAME|UNIT))",
 			"beginCaptures": {
 				"1": {"name": "keyword.control.command.charmm"},
 				"2": {"name": "storage.type.structure.charmm"},
@@ -46,10 +46,11 @@
 			"contentName": "source.rtf.charmm",
 			"patterns": [
 				{"include": "source.rtf.charmm"}
-			]
+			],
+			"comment": "Only matches inline RTF content, not READ RTF CARD NAME/UNIT file"
 		},
 		"embedded_prm": {
-			"begin": "(?i)^\\s*(READ)\\s+(PARA|PARAM|PARAMETER)\\s+(CARD)\\b",
+			"begin": "(?i)^\\s*(READ)\\s+(PARA|PARAM|PARAMETER)\\s+(CARD)\\b(?!.*(?:NAME|UNIT))",
 			"beginCaptures": {
 				"1": {"name": "keyword.control.command.charmm"},
 				"2": {"name": "storage.type.structure.charmm"},
@@ -60,6 +61,7 @@
 				"1": {"name": "keyword.control.command.charmm"}
 			},
 			"name": "meta.embedded.block.prm.charmm",
+			"comment": "Only matches inline PRM content, not READ PARA CARD NAME/UNIT file",
 			"contentName": "source.prm.charmm",
 			"patterns": [
 				{"include": "source.prm.charmm"}
@@ -191,7 +193,7 @@
 				},
 				{
 					"name": "keyword.control.command.charmm",
-					"match": "\\b(?i)(gene|generate|patc|patch|auto|autogen|autogenerate|buil|build|hbui|hbuild|join)\\b"
+					"match": "\\b(?i)(gene|generate|patc|patch|auto|autogen|autogenerate|buil|build|hbui|hbuild|join|noangle|noangl|nodihedral|nodihe|warn|setup|setu)\\b"
 				}
 			]
 		},
@@ -207,7 +209,7 @@
 				},
 				{
 					"name": "entity.name.function.dynamics.charmm",
-					"match": "\\b(?i)(nsavc|nsavv|nprint|npri|iprfrq|ihtfrq|ieqfrq|ntrfrq|isvfrq|inbfrq|ihbfrq|imgfrq)\\b"
+					"match": "\\b(?i)(nsavc|nsavv|nprint|npri|iprfrq|ihtfrq|ieqfrq|ntrfrq|isvfrq|inbfrq|inbf|ihbfrq|ihbf|imgfrq)\\b"
 				},
 				{
 					"name": "entity.name.function.dynamics.charmm",
@@ -290,6 +292,11 @@
 				},
 				{
 					"name": "variable.language.coordinate.charmm",
+					"match": "\\b(?i)(xdir|ydir|zdir|xref|yref|zref|xcen|ycen|zcen|phi|psi|theta)\\b",
+					"comment": "Direction and reference keywords"
+				},
+				{
+					"name": "variable.language.coordinate.charmm",
 					"match": "\\b(?i)(rms|rmsd|diff|dist|distance|mind|mindist|maxd|maxdist|aver|average|stat|statistics|dupl|duplicate)\\b"
 				},
 				{
@@ -310,7 +317,7 @@
 			"patterns": [
 				{
 					"name": "support.function.io.charmm",
-					"match": "\\b(?i)(open|clos|close|read|writ|write|prin|print|form|formatted|unfo|unformatted|unit|name|card|file|append|appe)\\b"
+					"match": "\\b(?i)(open|clos|close|read|writ|write|prin|print|form|formatted|unfo|unformatted|unit|name|card|cards|file|append|appe)\\b"
 				},
 				{
 					"name": "support.function.io.charmm",
@@ -434,7 +441,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.selection.charmm",
-					"match": "\\b(?i)(sele|select|end|all|none|bynu|bynum|segid|iseg|resid|ires|resn|resname|atom|type|chem|chemical)\\b"
+					"match": "\\b(?i)(sele|select|end|all|none|bynu|bynum|segid|segi|iseg|resid|ires|resn|resname|atom|type|chem|chemical)\\b"
 				},
 				{
 					"name": "keyword.other.selection.charmm",
