@@ -312,6 +312,11 @@
         {
           "name": "keyword.control.command.charmm",
           "match": "\\b(?i)(gene|generate|patc|patch|auto|autogen|autogenerate|buil|build|hbui|hbuild|join|noangle|noangl|nodihedral|nodihe|warn|setup|setu)\\b"
+        },
+        {
+          "name": "keyword.control.command.charmm",
+          "match": "\\b(?i)(abnr|sd|nrap|conj|powe|powell)\\b",
+          "comment": "Minimization methods"
         }
       ]
     },
@@ -384,6 +389,21 @@
           "name": "entity.name.function.dynamics.charmm",
           "match": "\\b(?i)(sm0k|smok|ftsm|voro|voronoi)\\b",
           "comment": "String method options"
+        },
+        {
+          "name": "entity.name.function.dynamics.charmm",
+          "match": "\\b(?i)(tolg|tole|tolf|step|iscvel|iscv)\\b",
+          "comment": "Minimization/dynamics tolerance options"
+        },
+        {
+          "name": "entity.name.function.dynamics.charmm",
+          "match": "\\b(?i)(exlm|msph|sph|dph|iores|sync)\\b",
+          "comment": "Replica exchange pH-MD options"
+        },
+        {
+          "name": "entity.name.function.dynamics.charmm",
+          "match": "\\b(?i)(gpuid|gpui)\\b",
+          "comment": "GPU device selection"
         }
       ]
     },
@@ -504,6 +524,11 @@
           "name": "support.function.io.charmm",
           "match": "\\b(?i)(mij|phix|mcm|trj|namd|velc|vele|velf)\\b",
           "comment": "Additional file types"
+        },
+        {
+          "name": "support.function.io.charmm",
+          "match": "\\b(?i)(firstu|firs|nunit|nuni|outu|recenter|rece|flex)\\b",
+          "comment": "Trajectory merge and I/O options"
         }
       ]
     },
@@ -565,6 +590,11 @@
           "name": "entity.name.type.solvation.charmm",
           "match": "\\b(?i)(npbeq|npbe|sten|membrane|memb)\\b",
           "comment": "PBEQ and membrane options"
+        },
+        {
+          "name": "entity.name.type.solvation.charmm",
+          "match": "\\b(?i)(octa|octahedral|octh|cutoff|cuto)\\b",
+          "comment": "Crystal shape and cutoff options"
         }
       ]
     },
@@ -688,6 +718,11 @@
           "name": "keyword.other.selection.charmm",
           "match": "\\b(?i)(byres|byre|byseg|byse|inter|inte)\\b",
           "comment": "Selection modifiers"
+        },
+        {
+          "name": "keyword.other.selection.charmm",
+          "match": "\\b(?i)(byresid|byrei|bysegid|bysei|hydrogen|hydr)\\b",
+          "comment": "Image and selection modifiers"
         }
       ]
     },
