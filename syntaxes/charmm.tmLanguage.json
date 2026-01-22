@@ -61,11 +61,6 @@
 							"match": "\\\\."
 						}
 					]
-				},
-				{
-					"name": "string.quoted.single.charmm",
-					"begin": "'",
-					"end": "'"
 				}
 			]
 		},
