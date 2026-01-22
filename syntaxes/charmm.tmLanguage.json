@@ -4,7 +4,6 @@
 	"patterns": [
 		{"include": "#psf_section_headers"},
 		{"include": "#comments"},
-		{"include": "#strings"},
 		{"include": "#variables"},
 		{"include": "#control_flow"},
 		{"include": "#comparison_operators"},
@@ -24,7 +23,8 @@
 		{"include": "#prm_keywords"},
 		{"include": "#psf_keywords"},
 		{"include": "#storage"},
-		{"include": "#constants"}
+		{"include": "#constants"},
+		{"include": "#continuation"}
 	],
 	"repository": {
 		"psf_section_headers": {
@@ -46,21 +46,6 @@
 				{
 					"name": "comment.line.asterisk.charmm",
 					"match": "^\\s*\\*.*$"
-				}
-			]
-		},
-		"strings": {
-			"patterns": [
-				{
-					"name": "string.quoted.double.charmm",
-					"begin": "\"",
-					"end": "\"",
-					"patterns": [
-						{
-							"name": "constant.character.escape.charmm",
-							"match": "\\\\."
-						}
-					]
 				}
 			]
 		},
@@ -401,6 +386,15 @@
 				{
 					"name": "constant.language.boolean.charmm",
 					"match": "\\b(?i)(true|false|on|off|yes|no)\\b"
+				}
+			]
+		},
+		"continuation": {
+			"patterns": [
+				{
+					"name": "punctuation.separator.continuation.charmm",
+					"match": "-\\s*$",
+					"comment": "Hyphen at end of line indicates continuation to next line"
 				}
 			]
 		}
