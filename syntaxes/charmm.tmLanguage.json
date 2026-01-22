@@ -44,8 +44,9 @@
 					"comment": "Comments starting with !"
 				},
 				{
-					"name": "comment.line.asterisk.charmm",
-					"match": "^\\s*\\*.*$"
+					"name": "markup.heading.title.charmm",
+					"match": "^\\s*\\*.*$",
+					"comment": "Title lines starting with * - distinct from comments"
 				}
 			]
 		},
