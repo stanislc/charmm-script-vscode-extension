@@ -39,7 +39,7 @@
       "patterns": [
         {
           "name": "keyword.control.section.prm.charmm",
-          "match": "^\\s*(?i)(ATOM|ATOMS|BOND|BONDS|ANGL|ANGLES|THET|THETA|DIHE|DIHEDRALS|PHI|IMPR|IMPROPER|IMPROPERS|CMAP|NONB|NONBONDED|NBFI|NBFIX|HBON|HBOND|END)\\b"
+          "match": "^\\s*(?i)(ATOM|ATOMS|BOND|BONDS|ANGL|ANGLES|THET|THETA|DIHE|DIHEDRALS|PHI|IMPR|IMPH|IMPROPER|IMPROPERS|CMAP|NONB|NONBONDED|NBFI|NBFIX|HBON|HBOND|END)\\b"
         }
       ]
     },
