@@ -448,6 +448,11 @@
           "name": "support.class.energy.charmm",
           "match": "\\b(?i)(pmewald|pmew|lrc|lrvdw)\\b",
           "comment": "PME and long-range correction options"
+        },
+        {
+          "name": "support.class.energy.charmm",
+          "match": "\\b(?i)(vfswitch|vfsw|fswitch|fswi|vshift|vshi|fshift|fshi)\\b",
+          "comment": "Force/energy switching options"
         }
       ]
     },
