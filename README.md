@@ -78,6 +78,7 @@ Initial alpha release
 
 - Original extension by [Truman-Xu](https://github.com/Truman-Xu)
 - Enhanced with comprehensive command coverage based on CHARMM source code analysis
+- Additional keywords contributed by [Stanislav Cherepanov](https://github.com/stanislc)
 
 ## License
 
