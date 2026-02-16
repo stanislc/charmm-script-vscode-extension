@@ -1,0 +1,49 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "CHARMM PSF",
+	"patterns": [
+		{"include": "#psf_header"},
+		{"include": "#psf_sections"},
+		{"include": "#psf_flags"},
+		{"include": "#constants"}
+	],
+	"repository": {
+		"psf_header": {
+			"patterns": [
+				{
+					"name": "keyword.control.header.psf.charmm",
+					"match": "^\\s*(?i)(PSF)\\b"
+				}
+			]
+		},
+		"psf_sections": {
+			"patterns": [
+				{
+					"name": "entity.name.section.psf.charmm",
+					"match": "!(NTITLE|NATOM|NBOND|NTHETA|NPHI|NIMPHI|NDON|NACC|NNB|NGRP|NUMLP|NCRTERM|MOLNT)\\b"
+				}
+			]
+		},
+		"psf_flags": {
+			"patterns": [
+				{
+					"name": "keyword.other.flag.psf.charmm",
+					"match": "\\b(?i)(EXT|XPLOR|CMAP|CHEQ|DRUDE)\\b"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.float.charmm",
+					"match": "\\b-?\\d+\\.\\d*([eEdD][+-]?\\d+)?\\b"
+				},
+				{
+					"name": "constant.numeric.integer.charmm",
+					"match": "\\b-?\\d+\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.psf.charmm"
+}

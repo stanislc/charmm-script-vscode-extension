@@ -1,29 +1,93 @@
 {
   "name": "charmm-script",
   "displayName": "CHARMM Script",
-  "description": "Syntax Highlighting for CHARMM Script",
-  "version": "0.0.1",
+  "description": "Comprehensive syntax highlighting for CHARMM molecular dynamics scripts",
+  "version": "1.0.0",
+  "publisher": "stanislc",
   "engines": {
     "vscode": "^1.69.0"
   },
   "categories": [
     "Programming Languages"
   ],
+  "keywords": [
+    "charmm",
+    "molecular dynamics",
+    "computational chemistry",
+    "biophysics",
+    "simulation"
+  ],
   "contributes": {
-    "languages": [{
-      "id": "charmm",
-      "aliases": ["CHARMM", "charmm"],
-      "extensions": [".inp"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "charmm",
-      "scopeName": "source.inp",
-      "path": "./syntaxes/charmm.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "charmm",
+        "aliases": ["CHARMM", "charmm", "CHARMM Script"],
+        "extensions": [".inp", ".str"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "charmm-rtf",
+        "aliases": ["CHARMM RTF", "RTF"],
+        "extensions": [".rtf"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "charmm-prm",
+        "aliases": ["CHARMM PRM", "PRM"],
+        "extensions": [".prm"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "charmm-psf",
+        "aliases": ["CHARMM PSF", "PSF"],
+        "extensions": [".psf"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "charmm-crd",
+        "aliases": ["CHARMM CRD", "CRD"],
+        "extensions": [".crd"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "charmm",
+        "scopeName": "source.inp",
+        "path": "./syntaxes/charmm.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.rtf.charmm": "charmm-rtf",
+          "source.prm.charmm": "charmm-prm"
+        }
+      },
+      {
+        "language": "charmm-rtf",
+        "scopeName": "source.rtf.charmm",
+        "path": "./syntaxes/charmm-rtf.tmLanguage.json"
+      },
+      {
+        "language": "charmm-prm",
+        "scopeName": "source.prm.charmm",
+        "path": "./syntaxes/charmm-prm.tmLanguage.json"
+      },
+      {
+        "language": "charmm-psf",
+        "scopeName": "source.psf.charmm",
+        "path": "./syntaxes/charmm-psf.tmLanguage.json"
+      },
+      {
+        "language": "charmm-crd",
+        "scopeName": "source.crd.charmm",
+        "path": "./syntaxes/charmm-crd.tmLanguage.json"
+      }
+    ]
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Truman-Xu/charmm-script-vscode-extension.git"
-  }
+    "type": "git",
+    "url": "https://github.com/stanislc/charmm-script-vscode-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stanislc/charmm-script-vscode-extension/issues"
+  },
+  "license": "MIT"
 }
