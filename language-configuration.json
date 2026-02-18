@@ -19,8 +19,8 @@
     ],
     "folding": {
         "markers": {
-            "start": "^\\s*(?i)(IF|SELE|SELECT)\\b",
-            "end": "^\\s*(?i)(ENDIF|ENDI|END)\\b"
+            "start": "^\\s*([Ii][Ff]|[Ss][Ee][Ll][Ee]([Cc][Tt])?|[Bb][Ll][Oo][Cc]([Kk])?|[Nn][Oo][Ee]|[Rr][Ee][Ss][Ii]|[Pp][Rr][Ee][Ss])\\b",
+            "end": "^\\s*([Ee][Nn][Dd]([Ii]([Ff])?)?)\\b"
         }
     },
     "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)"
