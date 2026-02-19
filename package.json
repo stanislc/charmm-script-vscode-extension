@@ -3,7 +3,7 @@
   "displayName": "CHARMM Script",
   "description": "Comprehensive syntax highlighting for CHARMM molecular dynamics scripts",
   "version": "1.0.0",
-  "publisher": "stanislc",
+  "publisher": "TrumanXu",
   "engines": {
     "vscode": "^1.69.0"
   },
@@ -84,10 +84,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stanislc/charmm-script-vscode-extension.git"
+    "url": "https://github.com/Truman-Xu/charmm-script-vscode-extension.git"
   },
   "bugs": {
-    "url": "https://github.com/stanislc/charmm-script-vscode-extension/issues"
+    "url": "https://github.com/Truman-Xu/charmm-script-vscode-extension/issues"
   },
   "license": "MIT"
 }
